@@ -1,4 +1,3 @@
 # clock
 
-https://raw.githubusercontent.com/reesporte/clock.mp4
-
+https://github.com/reesporte/clock/raw/main/clock.mp4
