@@ -62,11 +62,11 @@ void showClock(int hour, int min, int sec) {
     mvprintw(c.y, c.x, "h");
 
     // minute hand
-    getCoord(min * (360 / 60), &c);
+    getCoord(min * 6, &c);
     mvprintw(c.y, c.x, "m");
 
     // second hand
-    getCoord(sec * (360 / 60), &c);
+    getCoord(sec * 6, &c);
     mvprintw(c.y, c.x, "s");
 
     // turn off color for next time
@@ -87,8 +87,8 @@ int main() {
         t = localtime(&now);
         clear();
         showClock(t->tm_hour % 12, t->tm_min, t->tm_sec);
-        msleep(10);
         refresh();
+        msleep(10);
     }
 
     endwin();
