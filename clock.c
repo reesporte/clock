@@ -3,6 +3,7 @@
 #include <math.h>
 #include <ncurses.h>
 #include <time.h>
+#include <unistd.h>
 
 #define PI 3.1415926535
 #define OFFSET 20
@@ -10,18 +11,6 @@
 #define MIDX OFFSET
 #define MIDY OFFSET / 2
 #define GREEN 1
-
-// msleep is sleep but in ms
-void msleep(long msec) {
-    struct timespec ts;
-    int res = 1;
-
-    ts.tv_sec = msec / 1000;
-    ts.tv_nsec = (msec % 1000) * 1000000;
-    while (res) {
-        res = nanosleep(&ts, &ts);
-    }
-}
 
 typedef struct {
     int x;
@@ -88,7 +77,7 @@ int main() {
         clear();
         showClock(t->tm_hour % 12, t->tm_min, t->tm_sec);
         refresh();
-        msleep(10);
+        sleep(1);
     }
 
     endwin();
